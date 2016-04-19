@@ -47,3 +47,9 @@ bower.json
 
 # Ignore pow environment settings
 .powenv
+
+# Coveralls
+/coverage
+
+# Environment Variables
+.env
