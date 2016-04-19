@@ -50,6 +50,7 @@ bower.json
 
 # Coveralls
 /coverage
+.coveralls
 
 # Environment Variables
 .env
