@@ -42,6 +42,7 @@ GEM
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
+    bcrypt (3.1.11)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
@@ -69,6 +70,12 @@ GEM
       thor (~> 0.19.1)
       tins (~> 1.6.0)
     debug_inspector (0.0.2)
+    devise (4.0.0)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0, < 5.1)
+      responders
+      warden (~> 1.2.3)
     diff-lcs (1.2.5)
     docile (1.1.5)
     erubis (2.7.0)
@@ -111,6 +118,7 @@ GEM
     orderly (0.0.3)
       capybara (>= 1.1)
       rspec (>= 2.14)
+    orm_adapter (0.5.0)
     pg (0.18.4)
     pry (0.10.3)
       coderay (~> 1.1.0)
@@ -146,6 +154,8 @@ GEM
     rake (11.1.2)
     rdoc (4.2.2)
       json (~> 1.4)
+    responders (2.1.2)
+      railties (>= 4.2.0, < 5.1)
     rspec (3.4.0)
       rspec-core (~> 3.4.0)
       rspec-expectations (~> 3.4.0)
@@ -205,6 +215,8 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.0.0)
       execjs (>= 0.3.0, < 3)
+    warden (1.2.6)
+      rack (>= 1.0)
     web-console (2.3.0)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -221,6 +233,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.1.0)
   coveralls
+  devise
   factory_girl_rails
   foundation-rails
   jbuilder (~> 2.0)
