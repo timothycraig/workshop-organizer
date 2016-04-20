@@ -30,4 +30,6 @@ end
 
 group :test do
   gem 'coveralls', require: false
+  gem 'shoulda-matchers'
+  gem 'shoulda'
 end
