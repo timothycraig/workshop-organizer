@@ -1,16 +1,11 @@
 require 'rails_helper'
 
-# RSpec.describe User, type: :model do
 describe User do
   let!(:user) { FactoryGirl.create(:user) }
-  # it { should have_valid(:first_name).when('John', 'Sally') }
-  # it { should_not have_valid(:first_name).when(nil, '') }
-  #
-  # it { should have_valid(:last_name).when('Smith', 'Swanson') }
-  # it { should_not have_valid(:last_name).when(nil, '') }
-  #
-  # it { should have_valid(:email).when('user@example.com', 'example@user.com') }
-  # it { should_not have_valid(:email).when(nil, '', 'user', 'user@com', 'user.com') }
+
+  it { should validate_presence_of(:first_name) }
+  it { should validate_presence_of(:last_name) }
+  it { should validate_presence_of(:email) }
 
   it 'has a matching password confirmation for the password' do
     user.password = 'password'

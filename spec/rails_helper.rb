@@ -10,6 +10,13 @@ require 'pry'
 require 'factory_girl_rails'
 require 'support/factories.rb'
 require 'support/helpers.rb'
+require 'shoulda-matchers'
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.library :rails
+  end
+end
 
 ActiveRecord::Migration.maintain_test_schema!
 
