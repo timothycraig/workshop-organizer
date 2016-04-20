@@ -1,55 +1,60 @@
 require 'rails_helper'
 
-feature 'sign up' , %{
-  As a prospective user
-  I can sign up and make an account
-  So I can attend workshops and write comments
+feature 'user signs in' , %{
+  As a user
+  I want to sign in
+  So I can sign up for workshops
 } do
 
   # Acceptance Criteria
-  # [] must specify valid email
-  # [] must specify valid pw, confirm pw
-  # [] if info is valid, registerd account
+  # [] must specify valid, previously registered email & pw
+  # [] If authenticated, I gain access to the system
+  # [] If signed in, I can't sign in again
   # [] if info not valid, error message
 
-  scenario 'user sucessfully signs up' do
-    visit root_path
+  scenario 'an existing user specifies a valid email & pw' do
+    user_login
 
-    click_link 'Sign Up'
-
-    fill_in 'user_first_name', with: 'Jon'
-    fill_in 'user_last_name', with: 'Smith'
-    fill_in 'user_email', with: 'user@example.com'
-    fill_in 'user_password', with: 'password'
-    fill_in 'user_password_confirmation', with: 'password'
-
-    click_button 'Sign Up'
-
-    expect(page).to have_content "Account created successfully. Welcome!"
+    expect(page).to have_content "Welcome Back!"
     expect(page).to have_content "Sign Out"
   end
 
-  scenario 'required info is not supplied' do
+  scenario 'an existing user specifies an invalid email & pw' do
     visit root_path
+    click_link 'Sign In'
 
-    click_link 'Sign Up'
-    click_button 'Sign Up'
+    fill_in 'user_email', with: 'test@test.com'
+    fill_in 'user_password', with: 'password'
 
-    expect(page).to have_content "can't be blank"
+    click_button 'Sign In'
+
+    expect(page).to have_content "Invalid email or password."
+    expect(page).to_not have_content "Welcome Back!"
     expect(page).to_not have_content "Sign Out"
   end
 
-  scenario 'passwords do not match' do
+  scenario 'an existing user specifies a valid email & wrong pw' do
+    user1 = FactoryGirl.create(:user)
     visit root_path
+    click_link 'Sign In'
 
-    click_link 'Sign Up'
+    fill_in 'user_email', with: user1.email
+    fill_in 'user_password', with: 'incorrect'
 
-    fill_in 'user_password', with: 'password'
-    fill_in 'user_password_confirmation', with: 'notpassword'
+    click_button 'Sign In'
 
-    click_button 'Sign Up'
-
-    expect(page).to have_content "doesn't match"
+    expect(page).to have_content "Invalid email or password."
     expect(page).to_not have_content "Sign Out"
+  end
+
+  scenario 'an authenticated user can not re sign in' do
+    user_login
+
+    expect(page).to have_content "Sign Out"
+    expect(page).to_not have_content "Sign In"
+
+    visit new_user_session_path
+
+    expect(page).to have_content "You are already signed in."
   end
 end
