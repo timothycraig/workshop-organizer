@@ -9,6 +9,7 @@
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
   </head>
 
   <body>
@@ -48,4 +49,17 @@
     </div>
 
   </body>
+  <footer class="footer">
+    <div class="row">
+        <div class="small-12 columns">
+            <p class="slogan">Workshop Organizer</p>
+            <p class="links">
+              <%= link_to 'Home', root_path %>
+              <%= link_to 'Workshops', workshops_path %>
+              <%= link_to 'About', '#' %>
+            <p class="made">Made with ♥ at Launch Academy</p>
+            <p class="copywrite">Copywrite © 2016</p>
+        </div>
+    </div>
+  </footer>
 </html>

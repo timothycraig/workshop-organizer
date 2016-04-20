@@ -14,12 +14,13 @@ feature 'sign up' , %Q{
 
   scenario 'user sucessfully signs up' do
     visit root_path
+    
     click_link 'Sign Up'
 
     fill_in 'user_first_name', with: 'Jon'
     fill_in 'user_last_name', with: 'Smith'
-    fill_in 'Email', with: 'user@example.com'
-    fill_in 'Password', with: 'password'
+    fill_in 'user_email', with: 'user@example.com'
+    fill_in 'user_password', with: 'password'
     fill_in 'user_password_confirmation', with: 'password'
 
     click_button 'Sign Up'
@@ -30,6 +31,7 @@ feature 'sign up' , %Q{
 
   scenario 'required info is not supplied' do
     visit root_path
+
     click_link 'Sign Up'
     click_button 'Sign Up'
 
@@ -39,9 +41,10 @@ feature 'sign up' , %Q{
 
   scenario 'passwords do not match' do
     visit root_path
+
     click_link 'Sign Up'
 
-    fill_in 'Password', with: 'password'
+    fill_in 'user_password', with: 'password'
     fill_in 'user_password_confirmation', with: 'notpassword'
 
     click_button 'Sign Up'
