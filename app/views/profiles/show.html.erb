@@ -1,0 +1,10 @@
+<h3>Your Profile!</h3>
+  <div>
+    <%= link_to 'Edit Profile', edit_profile_path, class: 'button' %>
+  </div>
+  ​
+  <div>
+    <%= link_to 'Edit registration', edit_user_registration_path, class: 'button' %>
+  </div>
+  ​
+<p>Email: <%= @user.email %></p>

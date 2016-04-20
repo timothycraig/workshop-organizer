@@ -1,0 +1,40 @@
+<h4>Profiles Index</h4>
+
+<% if @profiles.nil? %>
+  There are no profiles to display.
+<% else %>
+  <% @profiles.each do |profile| %>
+    <table>
+      <thead>
+        <th>
+          First Name
+        </th>
+        <th>
+          Last Name
+        </th>
+        <th>
+          User Email
+        </th>
+        <th>
+          Delete?
+        </th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <%= profile.user.first_name %>
+          </td>
+          <td>
+            <%= profile.user.last_name %>
+          </td>
+          <td>
+            <%= profile.user.email %>
+          </td>
+          <td>
+            <%= button_to "Delete", profile_path(profile), class:"button", method: "delete" %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+<% end %>
