@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'sign up' , %Q{
+feature 'sign up' , %{
   As a prospective user
   I can sign up and make an account
   So I can attend workshops and write comments
@@ -14,7 +14,7 @@ feature 'sign up' , %Q{
 
   scenario 'user sucessfully signs up' do
     visit root_path
-    
+
     click_link 'Sign Up'
 
     fill_in 'user_first_name', with: 'Jon'
