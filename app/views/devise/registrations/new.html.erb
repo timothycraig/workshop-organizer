@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="small-12 large-6 columns">
+    <h3 class="callout">Sign Up To Attend Workshops</h3>
+  </div>
+</div>
+<div class="row textured_bg1">
+  <div class="small-12 large-6 columns">
+    <div class="callout">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
+
+        <div class="field">
+          <%= f.text_field :first_name, required: true, autofocus: true, Placeholder: 'First Name' %>
+        </div>
+
+        <div class="field">
+          <%= f.text_field :last_name, required: true, autofocus: true, Placeholder: 'Last Name' %>
+        </div>
+
+        <div class="field">
+          <%= f.email_field :email, required: true, autofocus: true, Placeholder: 'Email' %>
+        </div>
+
+        <div class="field">
+          <%= f.password_field :password, autocomplete: "off", Placeholder: "Password (#{@minimum_password_length} characters minimum)" %>
+        </div>
+
+        <div class="field">
+          <%= f.password_field :password_confirmation, autocomplete: "off", Placeholder: 'Password Confirmation' %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Sign Up", class: 'button' %>
+        </div>
+        <%= render "devise/shared/links" %>
+      <% end %>
+  </div>
+  </div>
+</div>

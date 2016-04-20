@@ -15,3 +15,52 @@
 //= require foundation_and_overrides
 
  */
+.row {
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+.footer {
+  background-image: url("http://www.odsc.com/wp-content/uploads/2015/12/hexabump.png");
+  // background-color: #323840;
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 1rem;
+  p {
+    &.slogan {
+      color: #00bcdd;
+      font-size: 1.8rem;
+      margin: 0 0 1rem;
+    }
+    &.copywrite {
+      color: #8f9296;
+      font-size: 0.875rem;
+      margin: 0;
+    }
+    &.made {
+      color: #ffffff;
+      font-size: 0.875rem;
+      margin: 0;
+    }
+}
+
+.links a {
+  list-style: none;
+  font-weight: bold;
+  color: #ffffff;
+  padding: 3rem 0 2rem;
+  margin: 0;
+    &::after {
+      content: "•";
+      padding: 0 0.4rem 0 0.8rem;
+    }
+    &:last-child::after {
+      content: "";
+      padding: 0 0.4rem 0 0.8rem;
+    }
+  }
+}
+
+// .textured_bg1 {
+  // background-image: url("http://www.odsc.com/wp-content/uploads/2015/12/linen_@2X.png");
+// }
