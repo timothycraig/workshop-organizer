@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'user signs in' , %{
+feature 'user signs in', %{
   As a user
   I want to sign in
   So I can sign up for workshops

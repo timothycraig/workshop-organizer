@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'sign up' , %{
+feature 'sign up', %{
   As a prospective user
   I can sign up and make an account
   So I can attend workshops and write comments
