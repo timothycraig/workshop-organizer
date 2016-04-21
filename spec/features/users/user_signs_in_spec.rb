@@ -10,8 +10,9 @@ feature 'user signs in', %{
   # [] must specify valid, previously registered email & pw
   # [] If authenticated, I gain access to the system
   # [] If signed in, I can't sign in again
-  # [] if info not valid, error message
-  # [] Visiting the `/profile/1` path should show the profile details for a profile with the ID of 1.
+  # [] If info not valid, error message
+  # [] Visiting the '/profiles/1' path should show the profile details for a profile with the ID of 1.
+  # [] Authenticated users can not access the '/profiles' path
 
   let!(:user) { FactoryGirl.create(:user) }
   let!(:profile) { FactoryGirl.create(:profile, user: user) }
@@ -22,8 +23,39 @@ feature 'user signs in', %{
     expect(page).to have_content "Welcome Back!"
     expect(page).to have_content "Sign Out"
 
-    visit profile_path(profile)
+    click_link 'My Profile'
+
     expect(page).to have_content user.first_name
+    expect(page).to have_content user.email
+  end
+
+  scenario 'an existing user fails to visit the profiles path' do
+    login(user)
+
+    expect(page).to have_content "Welcome Back!"
+    expect(page).to have_content "Sign Out"
+    expect(page).to_not have_content "Profiles"
+
+    visit profiles_path
+    expect(page).to_not have_content "Profiles Index"
+  end
+
+  scenario 'a user not signed up has restricted access' do
+    visit root_path
+    visit profiles_path
+
+    expect(page).to have_content "Sign In"
+    expect(page).to have_content "You do not have access"
+
+    visit "/profiles/#{profile.id}"
+
+    expect(page).to have_content "Sign In"
+    expect(page).to have_content "You do not have access"
+
+    visit "/profiles/#{profile.id}/edit"
+
+    expect(page).to have_content "Sign In"
+    expect(page).to have_content "You do not have access"
   end
 
   scenario 'an existing user specifies an invalid email & pw' do

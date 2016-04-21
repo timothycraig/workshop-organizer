@@ -6,10 +6,10 @@
     <table>
       <thead>
         <th>
-          First Name
+          Last Name
         </th>
         <th>
-          Last Name
+          First Name
         </th>
         <th>
           User Email
@@ -17,15 +17,21 @@
         <th>
           Delete?
         </th>
-        <th>
-          Edit?
-        </th>
       </thead>
       <tbody>
         <% @profiles.each do |profile| %>
         <tr>
           <td>
+            <%= profile.user.last_name %>
+          </td>
+          <td>
             <%= profile.user.first_name %>
+          </td>
+          <td>
+            <%= profile.user.email %>
+          </td>
+          <td>
+            <%= link_to "Delete Profile", profile_path(profile), class:"button", method: "delete" %>
           </td>
         </tr>
         <% end %>
