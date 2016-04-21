@@ -10,13 +10,52 @@ feature 'user signs in', %{
   # [] must specify valid, previously registered email & pw
   # [] If authenticated, I gain access to the system
   # [] If signed in, I can't sign in again
-  # [] if info not valid, error message
+  # [] If info not valid, error message
+  # [] Visiting the '/profiles/1' path should show the profile details for a profile with the ID of 1.
+  # [] Authenticated users can not access the '/profiles' path
 
-  scenario 'an existing user specifies a valid email & pw' do
-    user_login
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:profile) { FactoryGirl.create(:profile, user: user) }
+
+  scenario 'an existing user specifies a valid email & pw, also sees profile' do
+    login(user)
 
     expect(page).to have_content "Welcome Back!"
     expect(page).to have_content "Sign Out"
+
+    click_link 'My Profile'
+
+    expect(page).to have_content user.first_name
+    expect(page).to have_content user.email
+  end
+
+  scenario 'an existing user fails to visit the profiles path' do
+    login(user)
+
+    expect(page).to have_content "Welcome Back!"
+    expect(page).to have_content "Sign Out"
+    expect(page).to_not have_content "Profiles"
+
+    visit profiles_path
+    expect(page).to_not have_content "Profiles Index"
+  end
+
+  scenario 'a user not signed up has restricted access' do
+    visit root_path
+    visit profiles_path
+
+    expect(page).to have_content "Sign In"
+    expect(page).to have_content "You do not have access"
+
+    visit "/profiles/#{profile.id}"
+
+    expect(page).to have_content "Sign In"
+    expect(page).to have_content "You do not have access"
+
+    visit "/profiles/#{profile.id}/edit"
+
+    expect(page).to have_content "Sign In"
+    expect(page).to have_content "You do not have access"
   end
 
   scenario 'an existing user specifies an invalid email & pw' do
@@ -34,11 +73,10 @@ feature 'user signs in', %{
   end
 
   scenario 'an existing user specifies a valid email & wrong pw' do
-    user1 = FactoryGirl.create(:user)
     visit root_path
     click_link 'Sign In'
 
-    fill_in 'user_email', with: user1.email
+    fill_in 'user_email', with: user.email
     fill_in 'user_password', with: 'incorrect'
 
     click_button 'Sign In'

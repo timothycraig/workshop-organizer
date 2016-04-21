@@ -1,0 +1,18 @@
+<h3>Edit Profile</h3>
+
+<div class="small-12 large-6 callout secondary">
+  <%= form_for @profile do |f| %>
+
+    <div class="callout">
+      Name: <%= @profile.user.first_name %>
+      <%= @profile.user.last_name %><br>
+      Email: <%= @profile.user.email %>
+    </div>
+
+    <%= f.text_field :company, Placeholder: 'Company' %>
+
+    <%= f.text_area :biography,  Placeholder: 'Brief Bio', rows: 5 %>
+
+    <%= f.submit "Update Profile", class: 'button' %>
+  <% end %>
+</div>
