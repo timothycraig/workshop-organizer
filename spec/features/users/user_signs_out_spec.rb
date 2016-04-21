@@ -13,6 +13,6 @@ feature "User logs out" do
     click_on "Sign Out"
 
     expect(page).to have_content "Sign In"
-    expect(page).to_not have_content "Sign Out" 
+    expect(page).to_not have_content "Sign Out"
   end
 end
