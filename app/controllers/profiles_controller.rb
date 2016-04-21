@@ -24,35 +24,34 @@ class ProfilesController < ApplicationController
   #   redirect_to profiles_path
   # end
   #
-  # def edit
-  #   @profile = Profile.find(params[:id])
-  # end
+  def edit
+    @profile = Profile.find(params[:id])
+  end
   #
-  # def update
-  #   @profile = Profile.find(params[:id])
-  #   if @profile.update(profile_params)
-  #     flash[:notice] = "Successfully edited your Profile!"
-  #     redirect_to profile_path(@profile)
-  #   else
-  #     flash[:error] = "Did not manage to update profile. #{@profile.errors.full_messages.join(', ')}."
-  #     render :edit
-  #   end
-  # end
+  def update
+    @profile = Profile.find(params[:id])
+    if @profile.update(profile_params)
+      flash[:success] = "Successfully edited your Profile!"
+      redirect_to profile_path(@profile)
+    else
+      flash[:alert] = "Did not manage to update profile. #{@profile.errors.full_messages.join(', ')}."
+      render :edit
+    end
+  end
   #
-  # private
+  private
   #
-  # def profile_params
-  #   params.require(:profile).permit(
-  #     :username,
-  #     :location,
-  #     :pun,
-  #     :avatar_url,
-  #     :remove_avatar_url
-  #   )
-  # end
+  def profile_params
+    params.require(:profile).permit(
+      :user_id,
+      :avatar_url,
+      :company,
+      :biography
+    )
+  end
   #
   # def authorize_user
-  #   if !user_signed_in? || !current_user.admin?
+  #   if !user_signed_in?
   #     redirect_to root_path
   #   end
   # end

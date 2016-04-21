@@ -1,7 +1,8 @@
 class Profile < ActiveRecord::Base
   belongs_to :user
 
-  validates :user, presence: true
+  validates :user_id, presence: true
+  validates :biography, length: { maximum: 1500 }
 
   # mount_uploader :avatar_url, ImageUploader
   #

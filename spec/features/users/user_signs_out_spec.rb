@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 feature "User logs out" do
+  let!(:user) { FactoryGirl.create(:user) }
+  
   scenario 'user successfully logs out' do
     user_login
 

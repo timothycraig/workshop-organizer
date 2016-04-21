@@ -3,7 +3,6 @@
 <% if @profiles.nil? %>
   There are no profiles to display.
 <% else %>
-  <% @profiles.each do |profile| %>
     <table>
       <thead>
         <th>
@@ -18,23 +17,18 @@
         <th>
           Delete?
         </th>
+        <th>
+          Edit?
+        </th>
       </thead>
       <tbody>
+        <% @profiles.each do |profile| %>
         <tr>
           <td>
             <%= profile.user.first_name %>
           </td>
-          <td>
-            <%= profile.user.last_name %>
-          </td>
-          <td>
-            <%= profile.user.email %>
-          </td>
-          <td>
-            <%= button_to "Delete", profile_path(profile), class:"button", method: "delete" %>
-          </td>
         </tr>
+        <% end %>
       </tbody>
     </table>
-  <% end %>
 <% end %>

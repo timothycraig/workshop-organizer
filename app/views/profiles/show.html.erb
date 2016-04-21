@@ -1,10 +1,22 @@
-<h3>Your Profile!</h3>
+<div class="callout secondary">
+
+  <div class="callout">
+    <h5>Name: <%= @profile.user.first_name %> <%= @profile.user.last_name %><br>
+    Email: <%= @profile.user.email %></h5>
+  </div>
+
+  <div class="callout">
+    Company: <%= @profile.company %>
+  </div>
+
+  <div class="callout">
+    Bio: <%= @profile.biography %>
+  </div>
+
   <div>
     <%= link_to 'Edit Profile', edit_profile_path, class: 'button' %>
+    <%= link_to 'Edit Registration', edit_user_registration_path, class: 'button' %>
   </div>
+
+</div>
   ​
-  <div>
-    <%= link_to 'Edit registration', edit_user_registration_path, class: 'button' %>
-  </div>
-  ​
-<p>Email: <%= @user.email %></p>
