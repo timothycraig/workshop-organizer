@@ -2,7 +2,18 @@ class ProfilesController < ApplicationController
   before_action :authorize_user, only: [:index]
 
   def index
-    @profiles = Profile.order(created_at: :asc)
+    if params[:query] == ""
+      flash[:alert] = "Please enter a search term."
+      @profiles = Profile.order(created_at: :asc)
+    elsif params[:query].present?
+      @users = User.search(params[:query])
+      @profiles = []
+      @users.each do |user|
+        @profiles << user.profile
+      end
+    else
+      @profiles = Profile.order(created_at: :asc)
+    end
   end
 
   def show

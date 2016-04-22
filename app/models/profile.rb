@@ -4,6 +4,16 @@ class Profile < ActiveRecord::Base
   validates :user_id, presence: true
   validates :biography, length: { maximum: 1500 }
 
+  # include PgSearch
+  # pg_search_scope :search,
+  #   against: [
+  #     :company,
+  #     :biography
+  #   ],
+  #   using: {
+  #     tsearch: { prefix: true, dictionary: "english" }
+  #   }
+
   # mount_uploader :avatar_url, ImageUploader
   #
   # validates_processing_of :avatar_url

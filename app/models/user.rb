@@ -12,6 +12,17 @@ class User < ActiveRecord::Base
 
   after_create :build_default_profile
 
+  include PgSearch
+  pg_search_scope :search,
+    against: [
+      :first_name,
+      :last_name,
+      :email
+    ],
+    using: {
+      tsearch: { prefix: true, dictionary: "english" }
+    }
+
   def admin?
     role == "admin"
   end
