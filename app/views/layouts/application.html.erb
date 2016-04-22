@@ -6,6 +6,8 @@
 
     <title><%= content_for?(:title) ? yield(:title) : "Workshop Organizer" %></title>
 
+    <%= favicon_link_tag 'favicon.png' %>
+
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
@@ -16,7 +18,7 @@
   <body>
     <div class="top-bar">
       <div class="top-bar-left">
-        <ul class="menu">
+        <ul class="vertical medium-horizontal menu">
           <li class="menu-text">
             <%= link_to('Workshop Organizer', root_path) %>
           </li>
@@ -24,7 +26,7 @@
       </div>
 
       <div class="top-bar-right">
-        <ul class="menu">
+        <ul class="vertical medium-horizontal menu">
 
           <li class="menu-text">
             <%= link_to('Workshops', workshops_path) %>
