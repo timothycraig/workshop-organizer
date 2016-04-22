@@ -29,35 +29,6 @@ feature 'user signs in', %{
     expect(page).to have_content user.email
   end
 
-  scenario 'an existing user fails to visit the profiles path' do
-    login(user)
-
-    expect(page).to have_content "Welcome Back!"
-    expect(page).to have_content "Sign Out"
-    expect(page).to_not have_content "Profiles"
-
-    visit profiles_path
-    expect(page).to_not have_content "Profiles Index"
-  end
-
-  scenario 'a user not signed up has restricted access' do
-    visit root_path
-    visit profiles_path
-
-    expect(page).to have_content "Sign In"
-    expect(page).to have_content "You do not have access"
-
-    visit "/profiles/#{profile.id}"
-
-    expect(page).to have_content "Sign In"
-    expect(page).to have_content "You do not have access"
-
-    visit "/profiles/#{profile.id}/edit"
-
-    expect(page).to have_content "Sign In"
-    expect(page).to have_content "You do not have access"
-  end
-
   scenario 'an existing user specifies an invalid email & pw' do
     visit root_path
     click_link 'Sign In'
