@@ -9,6 +9,10 @@
       Email: <%= @profile.user.email %>
     </div>
 
+    <%= f.text_field :linkedin_url, Placeholder: 'LinkedIn URL' %>
+
+    <%= f.text_field :twitter_url, Placeholder: 'Twitter URL' %>
+
     <%= f.text_field :company, Placeholder: 'Company' %>
 
     <%= f.text_area :biography,  Placeholder: 'Brief Bio', rows: 5 %>

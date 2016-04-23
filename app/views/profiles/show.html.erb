@@ -3,7 +3,12 @@
   <div class="callout">
     <h5><i class="fi-torsos-male-female"></i>  <%= @profile.user.first_name %> <%= @profile.user.last_name %><br>
       <i class="fi-mail"></i>  <%= @profile.user.email %><br>
-      <a href='#'><i class="fi-social-linkedin"></i></a> | <a href="#"><i class="fi-social-twitter"></i></a>
+      <% if !@profile.linkedin_url.nil? %>
+        |  <a href="<%= @profile.linkedin_url %>" target="_blank"><i class="fi-social-linkedin"></i></a>  |
+      <% end %>
+      <% if !@profile.twitter_url.nil? %>
+        <a href="<%= @profile.twitter_url %>" target="_blank"><i class="fi-social-twitter"></i></a>  |
+      <% end %>
     </h5>
   </div>
 
