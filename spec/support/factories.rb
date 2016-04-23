@@ -10,6 +10,8 @@ FactoryGirl.define do
   factory :profile do
     company "ODSC"
     biography "This is my biography"
+    linkedin_url "http://linkedin.com"
+    twitter_url "http://twitter.com"
     user
   end
 end

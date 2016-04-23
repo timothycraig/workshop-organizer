@@ -44,6 +44,8 @@ user5 = User.create(
 Profile.create(
   company: "Open Data Science",
   biography: "I make sick Web Apps",
+  linkedin_url: "https://www.linkedin.com/in/ttcraig",
+  twitter_url: "https://twitter.com",
   user: user_admin
 )
 

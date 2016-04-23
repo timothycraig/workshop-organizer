@@ -67,7 +67,9 @@ class ProfilesController < ApplicationController
       :user_id,
       :avatar_url,
       :company,
-      :biography
+      :biography,
+      :linkedin_url,
+      :twitter_url
     )
   end
 
