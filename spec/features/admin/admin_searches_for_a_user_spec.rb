@@ -2,6 +2,10 @@ require 'rails_helper'
 
 feature 'admin searches for a user' do
 
+  # Acceptance Criteria
+  # [] admin logs in with valid credentials
+  # [] admin enters valid data to search field and finds profile
+
   let!(:admin) { FactoryGirl.create(:user, role: 'admin') }
   let!(:admin_profile) { FactoryGirl.create(:profile, user: admin) }
 

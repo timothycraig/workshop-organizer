@@ -9,7 +9,7 @@
     <%= favicon_link_tag 'favicon.png' %>
 
     <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
@@ -20,7 +20,7 @@
       <div class="top-bar-left">
         <ul class="vertical medium-horizontal menu">
           <li class="menu-text">
-            <%= link_to('Workshop Organizer', root_path) %>
+            <h4><%= link_to('Workshop Organizer', root_path) %></h4>
           </li>
         </ul>
       </div>
@@ -29,25 +29,25 @@
         <ul class="vertical medium-horizontal menu">
 
           <li class="menu-text">
-            <%= link_to('Workshops', workshops_path) %>
+            <strong><%= link_to('Workshops', workshops_path) %></strong>
           </li>
 
           <% if user_signed_in? && current_user.admin? %>
             <li class="menu-text">
-              <%= link_to('Profiles', profiles_path) %>
+              <strong><%= link_to('Profiles', profiles_path) %></strong>
             </li>
           <% end %>
 
           <% if user_signed_in? %>
             <li class="menu-text">
-              <%= link_to 'My Profile', profile_path(current_user.profile) if current_user %>
+              <strong><%= link_to 'My Profile', profile_path(current_user.profile) if current_user %></strong>
             </li>
             <li class="menu-text">
               <%= link_to('Sign Out', destroy_user_session_path, method: 'delete' ) %>
             </li>
             <% else %>
             <li class="menu-text">
-              <%= link_to('Sign In', new_user_session_path) %>
+              <strong><%= link_to('Sign In', new_user_session_path) %></strong>
             </li>
           <% end %>
         </ul>
@@ -58,18 +58,11 @@
       <%= render 'layouts/messages' %>
       <%= yield %>
     </div>
+    
+    <script>
+      $(document).foundation();
+    </script>
+
+    <%= render "layouts/footer" %>
   </body>
-  <footer class="footer">
-    <div class="row">
-        <div class="small-12 columns">
-            <p class="slogan">Workshop Organizer</p>
-            <p class="links">
-              <%= link_to 'Home', root_path %>
-              <%= link_to 'Workshops', workshops_path %>
-              <%= link_to 'About', '/about' %>
-            <p class="made">Made with ♥ at Launch Academy</p>
-            <p class="copywrite">Copyright © 2016</p>
-        </div>
-    </div>
-  </footer>
 </html>
