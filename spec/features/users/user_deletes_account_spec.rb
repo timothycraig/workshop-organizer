@@ -24,5 +24,6 @@ feature 'user deletes profile', %{
     click_link 'Delete Profile'
 
     expect(page).to have_content "Account Deleted Successfully."
+    expect(page).to have_content "Sign In"
   end
 end

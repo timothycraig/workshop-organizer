@@ -38,23 +38,4 @@ feature 'user edits profile', %{
 
     expect(page).to have_content 'Updated Company'
   end
-
-  scenario 'user tries to view & edit another users profile' do
-    login(user1)
-
-    expect(page).to have_content "Welcome Back!"
-    expect(page).to have_content "Sign Out"
-
-    click_link 'My Profile'
-
-    expect(page).to have_content user1.first_name
-    expect(page).to have_content user1.email
-    expect(page).to have_content profile1.company
-
-    visit "/profiles/#{profile2.id}"
-    expect(page).to have_content "You do not have access"
-
-    visit "/profiles/#{profile2.id}/edit"
-    expect(page).to have_content "You do not have access"
-  end
 end

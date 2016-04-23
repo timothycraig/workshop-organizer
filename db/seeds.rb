@@ -42,7 +42,7 @@ user5 = User.create(
 )
 
 Profile.create(
-  company: "ODSC",
+  company: "Open Data Science",
   biography: "I make sick Web Apps",
   user: user_admin
 )

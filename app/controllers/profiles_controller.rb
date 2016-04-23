@@ -2,7 +2,14 @@ class ProfilesController < ApplicationController
   before_action :authorize_user, only: [:index]
 
   def index
-    @profiles = Profile.order(created_at: :asc)
+    if params[:query] == ""
+      flash[:alert] = "Please enter a search term."
+      @profiles = Profile.order(created_at: :asc)
+    elsif params[:query].present?
+      get_users_and_profiles
+    else
+      @profiles = Profile.order(created_at: :asc)
+    end
   end
 
   def show
@@ -68,6 +75,14 @@ class ProfilesController < ApplicationController
     if !user_signed_in? || !current_user.admin?
       flash[:alert] = "You do not have access to that page"
       redirect_to root_path
+    end
+  end
+
+  def get_users_and_profiles
+    @users = User.search(params[:query])
+    @profiles = []
+    @users.each do |user|
+      @profiles << user.profile
     end
   end
 end
