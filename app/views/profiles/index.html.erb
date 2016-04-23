@@ -1,50 +1,52 @@
-<h4><i class="fi-torsos-male-female"></i>Profiles Index</h4>
+<div class="row row_padding">
+  <h4><i class="fi-torsos-male-female"></i>Profiles Index</h4>
 
-<div class="small-12 large-6 columns callout">
-  <p>
-    <%= form_tag profiles_path, method: :get do %>
-      <%= text_field_tag :query, params[:query], placeholder: "Search Profiles" %>
-      <%= submit_tag "Search", name: nil, class: "button"%>
-    <% end %>
-  </p>
-</div>
-
-<div class="small-12 columns callout">
-  <p>
-    <i class="fi-torsos-male-female"></i> <%= @profiles.count %> Result(s)
-  </p>
-  <table>
-    <thead>
-      <th>
-        Last Name
-      </th>
-      <th>
-        First Name
-      </th>
-      <th>
-        Email
-      </th>
-      <th>
-        Delete?
-      </th>
-    </thead>
-    <tbody>
-      <% @profiles.each do |profile| %>
-      <tr>
-        <td>
-          <%= profile.user.last_name %>
-        </td>
-        <td>
-          <%= profile.user.first_name %>
-        </td>
-        <td>
-          <%= profile.user.email %>
-        </td>
-        <td>
-          <%= link_to "Delete Profile", profile_path(profile), class:"button", method: "delete" %>
-        </td>
-      </tr>
+  <div class="small-12 large-6 columns callout">
+    <p>
+      <%= form_tag profiles_path, method: :get do %>
+        <%= text_field_tag :query, params[:query], placeholder: "Search Profiles" %>
+        <%= submit_tag "Search", name: nil, class: "button"%>
       <% end %>
-    </tbody>
-  </table>
+    </p>
+  </div>
+
+  <div class="small-12 columns callout">
+    <p>
+      <i class="fi-torsos-male-female"></i> <%= @profiles.count %> Result(s)
+    </p>
+    <table>
+      <thead>
+        <th>
+          Last Name
+        </th>
+        <th>
+          First Name
+        </th>
+        <th>
+          Email
+        </th>
+        <th>
+          Delete?
+        </th>
+      </thead>
+      <tbody>
+        <% @profiles.each do |profile| %>
+        <tr>
+          <td>
+            <%= profile.user.last_name %>
+          </td>
+          <td>
+            <%= profile.user.first_name %>
+          </td>
+          <td>
+            <%= profile.user.email %>
+          </td>
+          <td>
+            <%= link_to "Delete Profile", profile_path(profile), class:"button", method: "delete" %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

@@ -1,22 +1,24 @@
-<h3>Edit Profile</h3>
+<div class="row row_padding">
+  <h3>Edit Profile</h3>
 
-<div class="small-12 large-6 callout secondary">
-  <%= form_for @profile do |f| %>
+  <div class="small-12 large-6 callout secondary">
+    <%= form_for @profile do |f| %>
 
-    <div class="callout">
-      Name: <%= @profile.user.first_name %>
-      <%= @profile.user.last_name %><br>
-      Email: <%= @profile.user.email %>
-    </div>
+      <div class="callout">
+        Name: <%= @profile.user.first_name %>
+        <%= @profile.user.last_name %><br>
+        Email: <%= @profile.user.email %>
+      </div>
 
-    <%= f.text_field :linkedin_url, Placeholder: 'LinkedIn URL' %>
+      <%= f.text_field :linkedin_url, Placeholder: 'LinkedIn URL' %>
 
-    <%= f.text_field :twitter_url, Placeholder: 'Twitter URL' %>
+      <%= f.text_field :twitter_url, Placeholder: 'Twitter URL' %>
 
-    <%= f.text_field :company, Placeholder: 'Company' %>
+      <%= f.text_field :company, Placeholder: 'Company' %>
 
-    <%= f.text_area :biography,  Placeholder: 'Brief Bio', rows: 5 %>
+      <%= f.text_area :biography,  Placeholder: 'Brief Bio', rows: 5 %>
 
-    <%= f.submit "Update Profile", class: 'button' %>
-  <% end %>
+      <%= f.submit "Update Profile", class: 'button' %>
+    <% end %>
+  </div>
 </div>

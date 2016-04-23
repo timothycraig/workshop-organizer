@@ -1,30 +1,32 @@
-<div class="callout secondary">
+<div class="row row_padding">
+  <div class="callout secondary">
 
-  <div class="callout">
-    <h5><i class="fi-torsos-male-female"></i>  <%= @profile.user.first_name %> <%= @profile.user.last_name %><br>
-      <i class="fi-mail"></i>  <%= @profile.user.email %><br>
-      <% if !@profile.linkedin_url.nil? %>
-        |  <a href="<%= @profile.linkedin_url %>" target="_blank"><i class="fi-social-linkedin"></i></a>  |
-      <% end %>
-      <% if !@profile.twitter_url.nil? %>
-        <a href="<%= @profile.twitter_url %>" target="_blank"><i class="fi-social-twitter"></i></a>  |
-      <% end %>
-    </h5>
+    <div class="callout">
+      <h5><i class="fi-torsos-male-female"></i>  <%= @profile.user.first_name %> <%= @profile.user.last_name %><br>
+        <i class="fi-mail"></i>  <%= @profile.user.email %><br>
+        <% if !@profile.linkedin_url.nil? %>
+          |  <a href="<%= @profile.linkedin_url %>" target="_blank"><i class="fi-social-linkedin"></i></a>  |
+        <% end %>
+        <% if !@profile.twitter_url.nil? %>
+          <a href="<%= @profile.twitter_url %>" target="_blank"><i class="fi-social-twitter"></i></a>  |
+        <% end %>
+      </h5>
+    </div>
+
+    <div class="callout">
+      Company: <%= @profile.company %>
+    </div>
+
+    <div class="callout">
+      Bio: <%= @profile.biography %>
+    </div>
+
+    <div>
+      <%= link_to 'Edit Profile', edit_profile_path, class: 'button' %>
+      <%= link_to 'Edit Registration', edit_user_registration_path, class: 'button' %>
+      <%= link_to "Delete Profile", profile_path, class: "button", method: "delete" %>
+    </div>
+
   </div>
-
-  <div class="callout">
-    Company: <%= @profile.company %>
-  </div>
-
-  <div class="callout">
-    Bio: <%= @profile.biography %>
-  </div>
-
-  <div>
-    <%= link_to 'Edit Profile', edit_profile_path, class: 'button' %>
-    <%= link_to 'Edit Registration', edit_user_registration_path, class: 'button' %>
-    <%= link_to "Delete Profile", profile_path, class: "button", method: "delete" %>
-  </div>
-
 </div>
-  ​
+    ​

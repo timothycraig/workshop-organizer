@@ -15,9 +15,29 @@
 //= require foundation_and_overrides
 
  */
-.row {
+.row_padding {
   margin-bottom: 1em;
   margin-top: 1em;
+}
+
+.fullwidth {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: initial;
+}
+
+.row_flash {
+  background-color: #323840;
+}
+
+.nav_bar {
+  border-style: solid;
+  border-width: 2px;
+  border-color: #00bcdd;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
 }
 
 .footer {
@@ -26,6 +46,12 @@
   text-align: center;
   font-size: 1.2rem;
   padding: 1rem;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #cacaca;
+  border-bottom: 0;
+  border-left: 0;
+  border-right: 0;
   p {
     &.slogan {
       color: #00bcdd;
@@ -78,9 +104,78 @@
 }
 
 .alert-box {
-  color: #ec5840
+  color: #ec5840;
+  padding-left: 2em;
 }
 
 .success {
   color: #3adb76;
+}
+
+.hero {
+    background: url(http://www.odsc.com/wp-content/uploads/2016/01/ODSC-West-15-Workshops3.jpg) no-repeat center center;
+    background-size: cover;
+    height: 70vh;
+}
+
+// .hero:before {
+//     content: '';
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     bottom: 0;
+//     left: 0;
+//     background-image: linear-gradient(to bottom right,#002f4b,#dc4225);
+//     opacity: .8;
+// }
+//
+// .hero .intro {
+//     padding: 3rem;
+//     position: relative;
+//     top: 50%;
+//     transform: translateY(-50%);
+// }
+
+.hero h1 {
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: 1.5em;
+    letter-spacing: -.025em;
+    font-weight: 300;
+    text-align: center;
+}
+
+.hero p {
+    color: #fff;
+    line-height: 1.75em;
+    font-weight: 200;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.hero .tech-img {
+    background: url(http://static.pexels.com/wp-content/uploads/2015/02/apple-hand-iphone-6-4322-525x350.jpg) no-repeat center center;
+    background-size: cover;
+    height: 9rem;
+    width: 9rem;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+}
+
+@media only screen and (min-width: 40.063em) {
+    .hero .tech-img {
+        height: 18rem;
+        width: 18rem;
+    }
+
+    .hero h1 {
+        padding-top: 4.5rem;
+        text-align: right;
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        text-align: right;
+    }
 }
