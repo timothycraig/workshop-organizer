@@ -16,7 +16,7 @@
   </head>
 
   <body>
-    <div class="top-bar">
+    <div class="top-bar nav-bar">
       <div class="top-bar-left">
         <ul class="vertical medium-horizontal menu">
           <li class="menu-text">
@@ -54,14 +54,8 @@
       </div>
     </div>
 
-    <div class="row">
-      <%= render 'layouts/messages' %>
-      <%= yield %>
-    </div>
-    
-    <script>
-      $(document).foundation();
-    </script>
+    <%= render 'layouts/messages' %>
+    <%= yield %>
 
     <%= render "layouts/footer" %>
   </body>
