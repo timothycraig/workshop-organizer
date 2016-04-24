@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row-flash">
   <% flash.each do |name, msg| %>
     <% if msg.is_a?(String) %>
       <%= content_tag :div, msg, class: "alert-box #{name} radius" %>
