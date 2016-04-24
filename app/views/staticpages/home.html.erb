@@ -1,12 +1,11 @@
 <section class="hero">
     <div class="row">
-        <div class="small-centered medium-uncentered medium-6 large-7 columns">
+        <div class="small-centered medium-uncentered small-12 medium-6 large-5 columns">
             <h1>Workshop Organizer</h1>
-            <p>Improve your skills by attending a workshop.  Have your own ideas?
-            Submit a workshop idea of your own.</p>
-        </div>
-        <div class="small-centered medium-uncentered medium-6 large-5 columns">
-            <div class="tech-img"></div>
+            <p>Improve your skills by attending a workshop.<br>
+            Have your own ideas? Submit a workshop idea.</p>
+            <p><%= link_to 'Sign In', new_user_session_path, class: 'button' %>
+            <%= link_to 'Sign Up', '/users/sign_up', class: 'button' %></p>
         </div>
     </div>
 </section>
