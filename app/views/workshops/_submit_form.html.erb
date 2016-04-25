@@ -1,0 +1,11 @@
+<%= form_for @workshop do |f| %>
+  <%= f.text_field :title, placeholder: 'Title' %>
+
+  <%= f.text_field :date, placeholder: 'Date' %>
+
+  <%= f.text_field :capacity, placeholder: 'Capacity' %>
+
+  <%= f.text_area :abstract, rows: 10, placeholder: 'Abstract' %>
+
+  <%= f.submit "Submit Workshop", class: 'button' %>
+<% end %>

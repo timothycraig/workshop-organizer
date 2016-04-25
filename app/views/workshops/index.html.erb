@@ -1,3 +1,19 @@
 <div class="row row-padding">
   <h3 class="text-center"><i class="fi-wrench"></i> Workshops</h3>
 </div>
+
+<div class="row row-padding small-12 columns">
+  <%= link_to 'Submit a Workshop', new_workshop_path, class: 'button' %>
+</div>
+
+<div class="row row-padding">
+  <% @workshops.each do |workshop| %>
+  <div class="small-12 large-4 columns">
+    <div class="callout secondary">
+      <h5>Title: <%= workshop.title %></h5>
+      Date: <%= workshop.date %><br>
+      Capacity: <%= workshop.capacity %>
+    </div>
+  </div>
+  <% end %>
+</div>

@@ -14,4 +14,13 @@ FactoryGirl.define do
     twitter_url "http://twitter.com"
     user
   end
+
+  factory :workshop do
+    sequence(:title) { |n| "Intro to Machine Learning#{n}" }
+    date "1/1/2017"
+    capacity 100
+    abstract "A brief intro to Machine Learning.
+    This is a good course for beginners.  We'll be using Python and the Jupyter notebook."
+    user
+  end
 end
