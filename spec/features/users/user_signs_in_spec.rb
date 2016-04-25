@@ -22,6 +22,7 @@ feature 'user signs in', %{
 
     expect(page).to have_content "Welcome Back!"
     expect(page).to have_content "Sign Out"
+    expect(page.current_path).to eq workshops_path
 
     click_link 'My Profile'
 
