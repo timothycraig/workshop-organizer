@@ -1,8 +1,7 @@
 class WorkshopsController < ApplicationController
-  before_action :authorize_user, only: [:new, :edit]
+  before_action :authorize_user, only: [:new, :edit, :show]
 
   def index
-    # get_users_and_workshops
     if current_user.nil?
       @workshops = Workshop.approved
     else
@@ -12,6 +11,12 @@ class WorkshopsController < ApplicationController
         @workshops = Workshop.approved
       end
     end
+  end
+
+  def show
+    @workshop = Workshop.find(params[:id])
+    @user = @workshop.user
+    @profile = Profile.find(params[:id])
   end
 
   def new
@@ -42,13 +47,9 @@ class WorkshopsController < ApplicationController
     )
   end
 
-  # def workshop
-  #   @workshop ||= Workshop.find(params[:id])
-  # end
-
-  # def get_user
-  #   @user = User.find(params[:id])
-  # end
+  def workshop
+    @workshop ||= Workshop.find(params[:id])
+  end
 
   def authorize_user
     if !user_signed_in?
@@ -56,12 +57,4 @@ class WorkshopsController < ApplicationController
       redirect_to workshops_path
     end
   end
-  #
-  # def get_users_and_workshops
-  #   @users = User.search(params[:id])
-  #   @workshops = []
-  #   @users.each do |user|
-  #     @workshops << user.workshop
-  #   end
-  # end
 end

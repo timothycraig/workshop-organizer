@@ -1,0 +1,12 @@
+<div class="row row-padding">
+  <div class="small-12 columns">
+    <div class="callout">
+      <h5>Title: <%= @workshop.title %></h5>
+      <h5>Presenter: <%= @user.first_name %> <%= @user.last_name %></h5>
+      <h5><i class="fi-calendar"></i> <%= @workshop.date.to_formatted_s(:long) %></h5>
+      <h6>Capacity: <%= @workshop.capacity %></h6>
+      <p>Abstract: <%= @workshop.abstract %></p>
+      <p>Presenter Bio: <%= @profile.biography %></p>
+    </div>
+  </div>
+</div>

@@ -6,7 +6,6 @@ feature 'User submits a workshop' do
   # [] User must be signed in
   # [] Must specify required data
   # [] User is presented with erros if data is not valid
-  # [] Admin must sign in and see submission on submissions path
 
   let!(:user) { FactoryGirl.create(:user) }
   let!(:profile) { FactoryGirl.create(:profile, user: user) }
@@ -27,7 +26,6 @@ feature 'User submits a workshop' do
     click_on 'Submit Workshop'
 
     expect(page).to have_content "Workshop submitted successfully!"
-
   end
 
   scenario 'User unsucessfully adds a workshop idea' do

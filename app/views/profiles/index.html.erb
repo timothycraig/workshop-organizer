@@ -4,10 +4,7 @@
   <div class="small-12 large-6 columns">
     <div class="callout">
       <p>
-        <%= form_tag profiles_path, method: :get do %>
-          <%= text_field_tag :query, params[:query], placeholder: "Search Profiles" %>
-          <%= submit_tag "Search", name: nil, class: "button"%>
-        <% end %>
+        <%= render 'search' %>
       </p>
     </div>
   </div>
