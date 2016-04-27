@@ -1,5 +1,6 @@
 class WorkshopsController < ApplicationController
   before_action :authorize_user, only: [:new, :edit, :show]
+  before_action :authorize_admin, only: [:destroy]
 
   def index
     if current_user.nil?
@@ -14,7 +15,7 @@ class WorkshopsController < ApplicationController
   end
 
   def show
-    @workshop = Workshop.find(params[:id])
+    get_workshop
     @user = @workshop.user
     @profile = Profile.find(params[:id])
   end
@@ -35,6 +36,26 @@ class WorkshopsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    get_workshop
+    if !@workshop.approved
+      authorize_workshop
+    else
+      deauthorize_workshop
+    end
+  end
+
+  def destroy
+    get_workshop
+    if current_user.admin? && @workshop.destroy
+      flash[:notice] = "Workshop sucessfully deleted."
+      redirect_to workshops_path
+    end
+  end
+
   private
 
   def workshop_params
@@ -43,17 +64,45 @@ class WorkshopsController < ApplicationController
       :title,
       :date,
       :abstract,
-      :capacity
+      :capacity,
+      :approved
     )
   end
 
-  def workshop
+  def get_workshop
     @workshop ||= Workshop.find(params[:id])
+  end
+
+  def authorize_workshop
+    if @workshop.update_attribute(:approved, true)
+      flash[:success] = "Workshop Approved"
+      redirect_to workshops_path
+    else
+      flash[:error] = "Workshop Not Approved"
+      redirect_to workshops_path
+    end
+  end
+
+  def deauthorize_workshop
+    if @workshop.update_attribute(:approved, false)
+      redirect_to workshops_path
+      flash[:success] = "Workshop Disapproved"
+    else
+      flash[:error] = "Workshop Not Approved"
+      redirect_to workshops_path
+    end
   end
 
   def authorize_user
     if !user_signed_in?
       flash[:alert] = "You must be signed in to do that."
+      redirect_to workshops_path
+    end
+  end
+
+  def authorize_admin
+    if !current_user.admin?
+      flash[:alert] = "You do not have access to do that."
       redirect_to workshops_path
     end
   end
