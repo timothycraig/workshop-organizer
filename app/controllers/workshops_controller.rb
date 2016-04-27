@@ -76,21 +76,19 @@ class WorkshopsController < ApplicationController
   def authorize_workshop
     if @workshop.update_attribute(:approved, true)
       flash[:success] = "Workshop Approved"
-      redirect_to workshops_path
     else
       flash[:error] = "Workshop Not Approved"
-      redirect_to workshops_path
     end
+    redirect_to workshops_path
   end
 
   def deauthorize_workshop
     if @workshop.update_attribute(:approved, false)
-      redirect_to workshops_path
       flash[:success] = "Workshop Disapproved"
     else
       flash[:error] = "Workshop Not Approved"
-      redirect_to workshops_path
     end
+    redirect_to workshops_path
   end
 
   def authorize_user
