@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160423171815) do
+ActiveRecord::Schema.define(version: 20160425220143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,12 +59,14 @@ ActiveRecord::Schema.define(version: 20160423171815) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "workshops", force: :cascade do |t|
-    t.string   "title",      null: false
-    t.datetime "date",       null: false
-    t.integer  "capacity",   null: false
-    t.text     "abstract",   null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "title",                      null: false
+    t.datetime "date",                       null: false
+    t.integer  "capacity",                   null: false
+    t.text     "abstract",                   null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "user_id",                    null: false
+    t.boolean  "approved",   default: false
   end
 
 end

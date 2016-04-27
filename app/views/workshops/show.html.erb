@@ -1,0 +1,26 @@
+<div class="row row-padding">
+  <div class="small-12 columns">
+    <div class="callout">
+      <h5>Title: <%= @workshop.title %></h5>
+      <h5>Presenter: <%= @user.first_name %> <%= @user.last_name %></h5>
+      <p>
+        <% if !@profile.linkedin_url.nil? %>
+          |  <a href="<%= @profile.linkedin_url %>" target="_blank"><i class="fi-social-linkedin"></i></a>  |
+        <% end %>
+        <% if !@profile.twitter_url.nil? %>
+          <a href="<%= @profile.twitter_url %>" target="_blank"><i class="fi-social-twitter"></i></a>  |
+        <% end %>
+      </p>
+      <h5><i class="fi-calendar"></i> <%= @workshop.date.to_formatted_s(:long) %></h5>
+      <h6>Capacity: <%= @workshop.capacity %></h6>
+      <p>Abstract: <%= @workshop.abstract %></p>
+      <p>
+        <% if @profile.biography.nil? %>
+          Presenter has not submitted a bio yet.
+        <% elsif !@profile.biography.nil? %>
+          Presenter Bio: <%= @profile.biography %>
+        <% end %>
+      </p>
+    </div>
+  </div>
+</div>

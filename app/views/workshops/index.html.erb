@@ -1,3 +1,38 @@
-<div class="row row-padding">
+<div class="row row-padding small-12 columns">
   <h3 class="text-center"><i class="fi-wrench"></i> Workshops</h3>
+  <hr>
+</div>
+
+<div class="row row-padding small-12 columns">
+  <%= link_to 'Submit a Workshop', new_workshop_path, class: 'button' %>
+</div>
+
+<div class="row row-padding">
+  <% @workshops.each do |workshop| %>
+  <div class="small-12 large-4 columns">
+      <div class="callout">
+        <h5>Title: <%= link_to "#{workshop.title}", workshop_path(workshop) %></h5>
+        <hr>
+        Date: <%= workshop.date.to_formatted_s(:long) %><br>
+        Capacity: <%= workshop.capacity %>
+        <p>
+          <% if !current_user.nil? %>
+            <% if current_user.admin? && !workshop.approved %>
+              <%= form_for workshop, method: :put do |f| %>
+                <%= f.hidden_field :approved %>
+                <%= f.submit "Approve", class: "button tiny success" %>
+              <% end %>
+              <%= button_to "Delete", workshop_path(workshop), class:"button tiny alert", method:"delete" %>
+            <% elsif current_user.admin? && workshop.approved %>
+              <%= form_for workshop, method: :put do |f| %>
+                <%= f.hidden_field :approved %>
+                <%= f.submit "Disapprove", class: "button tiny alert" %>
+              <% end %>
+              <%= button_to "Delete", workshop_path(workshop), class:"button tiny alert", method:"delete" %>
+            <% end %>
+          <% end %>
+        </p>
+      </div>
+    </div>
+  <% end %>
 </div>

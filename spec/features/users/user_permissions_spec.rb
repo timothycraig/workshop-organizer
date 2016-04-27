@@ -25,9 +25,10 @@ feature 'User permissions' do
 
     visit profiles_path
     expect(page).to_not have_content "Profiles Index"
+    expect(page).to have_content "You do not have access"
   end
 
-  scenario 'a user not signed up has restricted access' do
+  scenario 'a user not signed up can not view or edit profiles' do
     visit root_path
     visit profiles_path
 
