@@ -7,12 +7,12 @@ feature 'user signs in', %{
 } do
 
   # Acceptance Criteria
-  # [] must specify valid, previously registered email & pw
-  # [] If authenticated, I gain access to the system
-  # [] If signed in, I can't sign in again
-  # [] If info not valid, error message
-  # [] Visiting the '/profiles/1' path should show the profile details for a profile with the ID of 1.
-  # [] Authenticated users can not access the '/profiles' path
+  # [x] must specify valid, previously registered email & pw
+  # [x] If authenticated, I gain access to the system
+  # [x] If signed in, I can't sign in again
+  # [x] If info not valid, error message
+  # [x] Visiting the '/profiles/1' path should show the profile details for a profile with the ID of 1.
+  # [x] Authenticated users can not access the '/profiles' path
 
   let!(:user) { FactoryGirl.create(:user) }
   let!(:profile) { FactoryGirl.create(:profile, user: user) }

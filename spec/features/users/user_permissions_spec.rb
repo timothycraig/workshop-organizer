@@ -3,9 +3,9 @@ require 'rails_helper'
 feature 'User permissions' do
 
   # Acceptance Criteria
-  # [] users don't have access to the profiles_path
-  # [] users can't view eachother's profiles
-  # [] users can't edit eachother's profiles
+  # [x] users don't have access to the profiles_path
+  # [x] users can't view eachother's profiles
+  # [x] users can't edit eachother's profiles
 
   let!(:user) { FactoryGirl.create(:user) }
   let!(:profile) { FactoryGirl.create(:profile, user: user) }

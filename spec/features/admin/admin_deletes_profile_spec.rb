@@ -7,11 +7,11 @@ feature 'admin deletes profile', %{
 } do
 
   # Acceptance Criteria
-  # [] must specify valid, previously registered email & pw
-  # [] If authenticated, I gain access to the system
-  # [] If signed in, I can't sign in again
-  # [] if info not valid, error message
-  # [] As an admin, visiting the '/profiles' path should show the profiles
+  # [x] must specify valid, previously registered email & pw
+  # [x] If authenticated, I gain access to the system
+  # [x] If signed in, I can't sign in again
+  # [x] if info not valid, error message
+  # [x] As an admin, visiting the '/profiles' path should show the profiles
 
   let!(:admin) { FactoryGirl.create(:user, role: 'admin') }
   let!(:admin_profile) { FactoryGirl.create(:profile, user: admin) }

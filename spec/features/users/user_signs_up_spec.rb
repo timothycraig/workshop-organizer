@@ -7,10 +7,10 @@ feature 'sign up', %{
 } do
 
   # Acceptance Criteria
-  # [] must specify valid email
-  # [] must specify valid pw, confirm pw
-  # [] if info is valid, registerd account
-  # [] if info not valid, error message
+  # [x] must specify valid email
+  # [x] must specify valid pw, confirm pw
+  # [x] if info is valid, registerd account
+  # [x] if info not valid, error message
 
   scenario 'user sucessfully signs up' do
     visit root_path

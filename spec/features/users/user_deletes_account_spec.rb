@@ -7,9 +7,9 @@ feature 'user deletes profile', %{
 } do
 
   # Acceptance Criteria
-  # [] must specify valid, previously registered email & pw to log in
-  # [] Visit 'My Profile'
-  # [] Click link Delete Profile
+  # [x] must specify valid, previously registered email & pw to log in
+  # [x] Visit 'My Profile'
+  # [x] Click link Delete Profile
 
   let!(:user) { FactoryGirl.create(:user) }
   let!(:profile) { FactoryGirl.create(:profile, user: user) }

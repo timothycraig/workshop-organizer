@@ -3,8 +3,8 @@ require 'rails_helper'
 feature 'User views workshop index' do
 
   # Acceptance Criteria
-  # [] Visit workshops path
-  # [] See workshop details
+  # [x] Visit workshops path
+  # [x] See workshop details
 
   let!(:user) { FactoryGirl.create(:user) }
   let!(:profile) { FactoryGirl.create(:profile, user: user) }
