@@ -6,5 +6,5 @@ Rails.application.routes.draw do
 
   resources :profiles
   resources :workshops
-  resources :user_workshops, only:[:create]
+  resources :user_workshops, only: [:create]
 end

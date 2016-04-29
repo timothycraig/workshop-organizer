@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Admin deletes a workshop' do
 
   # Acceptance Criteria
-  # [] Admin must sign in and see submissions
+  # [x] Admin must sign in and see submissions
 
   let!(:user) { FactoryGirl.create(:user) }
   let!(:profile) { FactoryGirl.create(:profile, user: user) }

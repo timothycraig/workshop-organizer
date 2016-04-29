@@ -3,9 +3,9 @@ require 'rails_helper'
 feature 'User submits a workshop' do
 
   # Acceptance Criteria
-  # [] User must be signed in
-  # [] Must specify required data
-  # [] User is presented with erros if data is not valid
+  # [x] User must be signed in
+  # [x] Must specify required data
+  # [x] User is presented with erros if data is not valid
 
   let!(:user) { FactoryGirl.create(:user) }
   let!(:profile) { FactoryGirl.create(:profile, user: user) }

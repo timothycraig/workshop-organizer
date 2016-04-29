@@ -7,9 +7,9 @@ feature 'user edits profile', %{
 } do
 
   # Acceptance Criteria
-  # [] Must specify valid, previously registered email & pw to log in
-  # [] Visit 'My Profile'
-  # [] Must enter valid data
+  # [x] Must specify valid, previously registered email & pw to log in
+  # [x] Visit 'My Profile'
+  # [x] Must enter valid data
 
   let!(:user1) { FactoryGirl.create(:user) }
   let!(:profile1) { FactoryGirl.create(:profile, user: user1) }

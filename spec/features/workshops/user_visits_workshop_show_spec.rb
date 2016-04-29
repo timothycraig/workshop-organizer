@@ -3,8 +3,8 @@ require 'rails_helper'
 feature 'User visits workshop show page' do
 
   # Acceptance Criteria
-  # [] User must be signed in
-  # [] User is presented with erros if not signed in
+  # [x] User must be signed in
+  # [x] User is presented with erros if not signed in
 
   let!(:user) { FactoryGirl.create(:user) }
   let!(:profile) { FactoryGirl.create(:profile, user: user) }
