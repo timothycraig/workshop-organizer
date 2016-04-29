@@ -27,7 +27,7 @@
       <div>
         <%= link_to 'Edit Profile', edit_profile_path, class: 'button' %>
         <%= link_to 'Edit Registration', edit_user_registration_path, class: 'button' %>
-        <%= link_to "Delete Profile", profile_path, class: "button", method: "delete" %>
+        <%= link_to "Delete Profile", profile_path, class: "button alert", method: "delete" %>
       </div>
 
     </div>
@@ -37,9 +37,30 @@
   <h3 class="text-center"><i class="fi-wrench"></i> My Workshops</h3>
   <hr>
     <div class="callout secondary">
-
+      <div class="callout">
+      <table>
+        <thead>
+          <th>
+            Workshop
+          </th>
+          <th>
+            Time
+          </th>
+        </thead>
+        <tbody>
+          <% @user_workshops.each do |user_workshop| %>
+          <tr>
+            <td>
+              <%= link_to "#{user_workshop.workshop.title}", workshop_path(user_workshop.workshop) %>
+            </td>
+            <td>
+              <%= user_workshop.workshop.date.to_formatted_s(:long) %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
     </div>
   </div>
-</div>
-
-    ​
+</div>​

@@ -1,5 +1,6 @@
 <div class="row row-padding">
   <div class="small-12 columns">
+    <% if @workshop.approved || current_user.admin? %>
     <div class="callout">
       <h5>Title: <%= @workshop.title %></h5>
       <h5>Presenter: <%= @user.first_name %> <%= @user.last_name %></h5>
@@ -12,8 +13,24 @@
         <% end %>
       </p>
       <h5><i class="fi-calendar"></i> <%= @workshop.date.to_formatted_s(:long) %></h5>
-      <h6>Capacity: <%= @workshop.capacity %></h6>
-      <p>Abstract: <%= @workshop.abstract %></p>
+      <h6>Capacity:
+      <% if UserWorkshop.where(workshop: @workshop).nil? %>
+        0
+      <% else %>
+        <%= UserWorkshop.where(workshop: @workshop).length %>
+      <% end %>
+      / <%= @workshop.capacity %></h6>
+      <% if @workshop.approved || current_user.admin? %>
+        <%= form_for UserWorkshop.new, url: user_workshops_path do |f| %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.hidden_field :workshop_id, value: @workshop.id %>
+          <%= f.submit "Sign Up", class: "button success" %>
+        <% end %>
+      <% else %>
+      <% end %>
+      <p>
+        Abstract: <%= @workshop.abstract %>
+      </p>
       <p>
         <% if @profile.biography.nil? %>
           Presenter has not submitted a bio yet.
@@ -22,5 +39,8 @@
         <% end %>
       </p>
     </div>
+    <% else %>
+    <% flash[:alert] = "You do not have access to that page." %>
+    <% end %>
   </div>
 </div>

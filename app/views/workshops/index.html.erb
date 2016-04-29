@@ -14,7 +14,13 @@
         <h5>Title: <%= link_to "#{workshop.title}", workshop_path(workshop) %></h5>
         <hr>
         Date: <%= workshop.date.to_formatted_s(:long) %><br>
-        Capacity: <%= workshop.capacity %>
+        <h6>Capacity:
+        <% if UserWorkshop.where(workshop: workshop).nil? %>
+          0
+        <% else %>
+          <%= UserWorkshop.where(workshop: workshop).length %>
+        <% end %>
+        / <%= workshop.capacity %></h6>
         <p>
           <% if !current_user.nil? %>
             <% if current_user.admin? && !workshop.approved %>
@@ -26,7 +32,7 @@
             <% elsif current_user.admin? && workshop.approved %>
               <%= form_for workshop, method: :put do |f| %>
                 <%= f.hidden_field :approved %>
-                <%= f.submit "Disapprove", class: "button tiny alert" %>
+                <%= f.submit "Disapprove", class: "button tiny warning" %>
               <% end %>
               <%= button_to "Delete", workshop_path(workshop), class:"button tiny alert", method:"delete" %>
             <% end %>

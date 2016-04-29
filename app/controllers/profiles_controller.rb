@@ -20,7 +20,8 @@ class ProfilesController < ApplicationController
       redirect_to root_path
     else
       @profile = Profile.find(params[:id])
-      @user = @profile.user
+      @user = current_user
+      @user_workshops = UserWorkshop.where(user_id: @user)
     end
   end
 

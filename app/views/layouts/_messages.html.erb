@@ -1,10 +1,8 @@
-<div class="expanded row">
-  <% flash.each do |name, msg| %>
-    <div class="callout <%= name %>" data-closable>
-      <%= msg %>
-      <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-  <% end %>
-</div>
+<% flash.each do |name, msg| %>
+  <div class="callout <%= name %>" data-closable>
+    <%= msg %>
+    <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<% end %>

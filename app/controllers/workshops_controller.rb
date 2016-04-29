@@ -17,7 +17,7 @@ class WorkshopsController < ApplicationController
   def show
     get_workshop
     @user = @workshop.user
-    @profile = Profile.find(params[:id])
+    @profile = @user.profile
   end
 
   def new
@@ -75,7 +75,7 @@ class WorkshopsController < ApplicationController
 
   def authorize_workshop
     if @workshop.update_attribute(:approved, true)
-      flash[:success] = "Workshop Approved"
+      flash[:success] = "Workshop Approved: #{@workshop.title}"
     else
       flash[:error] = "Workshop Not Approved"
     end
@@ -84,7 +84,7 @@ class WorkshopsController < ApplicationController
 
   def deauthorize_workshop
     if @workshop.update_attribute(:approved, false)
-      flash[:success] = "Workshop Disapproved"
+      flash[:success] = "Workshop Disapproved: #{@workshop.title}"
     else
       flash[:error] = "Workshop Not Approved"
     end
