@@ -1,18 +1,18 @@
 require 'rails_helper'
 
-feature 'User adds a workshop' do
+feature 'User edits workshop' do
 
   # Acceptance Criteria
   # [] User must be signed in
   # [] Must specify required data
   # [] User is presented with erros if data is not valid
-  # [] Admin must sign in and see submission
+  # [] Workshop must be approved
 
-  scenario 'User sucessfully adds a workshop idea' do
+  scenario 'User sucessfully edits a workshop' do
 
   end
 
-  scenario 'User unsucessfully adds a workshop idea' do
+  scenario 'User unsucessfully edits a workshop idea' do
 
   end
 

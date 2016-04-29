@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_one :profile
-  has_many :workshops
+  has_many :user_workshops
+  has_many :workshops, through: :user_workshops
 
   validates :first_name, presence: true
   validates :last_name, presence: true

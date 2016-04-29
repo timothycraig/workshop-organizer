@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Admin approves a workshop' do
 
   # Acceptance Criteria
-  # [] Admin must be signed in
+  # [] Admin must be signed in and visit the workshops path
 
   let!(:user) { FactoryGirl.create(:user) }
   let!(:profile) { FactoryGirl.create(:profile, user: user) }
