@@ -1,0 +1,41 @@
+<div data-sticky-container>
+  <div data-sticky data-margin-top='0' data-top-anchor="header:bottom" data-btm-anchor="content:bottom">
+    <div class="top-bar nav-bar">
+      <div class="top-bar-left">
+        <ul class="vertical medium-horizontal menu">
+          <li class="menu-text">
+            <h4><%= link_to('Workshop Organizer', root_path) %></h4>
+          </li>
+        </ul>
+      </div>
+
+      <div class="top-bar-right">
+        <ul class="vertical medium-horizontal menu">
+
+          <li class="menu-text">
+            <strong><%= link_to('Workshops', workshops_path) %></strong>
+          </li>
+
+          <% if user_signed_in? && current_user.admin? %>
+            <li class="menu-text">
+              <strong><%= link_to('Profiles', profiles_path) %></strong>
+            </li>
+          <% end %>
+
+          <% if user_signed_in? %>
+            <li class="menu-text">
+              <strong><%= link_to 'My Profile', profile_path(current_user.profile) %></strong>
+            </li>
+            <li class="menu-text">
+              <%= link_to('Sign Out', destroy_user_session_path, method: 'delete' ) %>
+            </li>
+            <% else %>
+            <li class="menu-text">
+              <strong><%= link_to('Sign In', new_user_session_path) %></strong>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
