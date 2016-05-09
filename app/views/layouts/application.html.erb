@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+  <head id="header">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -15,44 +15,8 @@
     <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
   </head>
 
-  <body>
-    <div class="top-bar nav-bar">
-      <div class="top-bar-left">
-        <ul class="vertical medium-horizontal menu">
-          <li class="menu-text">
-            <h4><%= link_to('Workshop Organizer', root_path) %></h4>
-          </li>
-        </ul>
-      </div>
-
-      <div class="top-bar-right">
-        <ul class="vertical medium-horizontal menu">
-
-          <li class="menu-text">
-            <strong><%= link_to('Workshops', workshops_path) %></strong>
-          </li>
-
-          <% if user_signed_in? && current_user.admin? %>
-            <li class="menu-text">
-              <strong><%= link_to('Profiles', profiles_path) %></strong>
-            </li>
-          <% end %>
-
-          <% if user_signed_in? %>
-            <li class="menu-text">
-              <strong><%= link_to 'My Profile', profile_path(current_user.profile) %></strong>
-            </li>
-            <li class="menu-text">
-              <%= link_to('Sign Out', destroy_user_session_path, method: 'delete' ) %>
-            </li>
-            <% else %>
-            <li class="menu-text">
-              <strong><%= link_to('Sign In', new_user_session_path) %></strong>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
+  <body id="content">
+    <%= render "layouts/nav" %>
 
     <div class="expanded row">
       <%= render 'layouts/messages' %>
