@@ -7,6 +7,9 @@
   <%= link_to 'Submit a Workshop', new_workshop_path, class: 'button' %>
 </div>
 
+<input ng-model="poop" ng-init="poop = undefined"></input>
+<div>{{ poop }}</div>
+
 <div class="row row-padding">
   <% @workshops.each do |workshop| %>
   <div class="small-12 large-6 columns">

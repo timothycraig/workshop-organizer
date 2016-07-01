@@ -15,7 +15,7 @@ gem 'pg', '~> 0.15'
 gem 'pg_search'
 
 # Front End Assets
-gem 'angularjs-rails'
+gem 'angularjs-rails', '~> 1.4.7'
 gem 'foundation-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
