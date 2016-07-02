@@ -14,5 +14,8 @@ I am building a web app that allows attendees to view the workshop list
 and sign up in advance for workshops.
 
 ### Building Blocks:
-- __Back end:__ Ruby on Rails, pSQL
+- __Back end:__ Ruby on Rails, Postgress
 - __Front end:__ Foundation 6, Sass
+
+### Current Task
+- Working on API

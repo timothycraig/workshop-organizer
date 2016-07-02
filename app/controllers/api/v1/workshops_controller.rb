@@ -13,49 +13,7 @@ class Api::V1::WorkshopsController < Api::V1::BaseController
       end
     end
   end
-
-  def show
-    get_workshop
-    @user = @workshop.user
-    @profile = @user.profile
-  end
-
-  def new
-    @workshop = Workshop.new
-  end
-
-  def create
-    @workshop = Workshop.new(workshop_params)
-    @workshop.user = current_user
-    if @workshop.save
-      flash[:notice] = "Workshop submitted successfully!  We will review your submission."
-      redirect_to workshops_path
-    else
-      flash[:error] = "#{@workshop.errors.full_messages.join ', '}."
-      render :new
-    end
-  end
-
-  def edit
-  end
-
-  def update
-    get_workshop
-    if !@workshop.approved
-      authorize_workshop
-    else
-      deauthorize_workshop
-    end
-  end
-
-  def destroy
-    get_workshop
-    if current_user.admin? && @workshop.destroy
-      flash[:notice] = "Workshop sucessfully deleted."
-      redirect_to workshops_path
-    end
-  end
-
+  
   private
 
   def workshop_params
